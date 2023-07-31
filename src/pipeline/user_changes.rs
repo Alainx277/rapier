@@ -167,18 +167,18 @@ pub(crate) fn handle_user_changes_to_rigid_bodies(
                     // NOTE: we can’t just use `colliders.get_mut_internal_with_modification_tracking`
                     // here because that would modify the `modified_colliders` inside of the `ColliderSet`
                     // instead of the one passed to this method.
-                    let co = colliders.index_mut_internal(*handle);
-                    if !co.changes.contains(ColliderChanges::MODIFIED) {
-                        modified_colliders.push(*handle);
-                    }
+                    // let co = colliders.index_mut_internal(*handle);
+                    // if !co.changes.contains(ColliderChanges::MODIFIED) {
+                    //     modified_colliders.push(*handle);
+                    // }
 
-                    if rb.enabled && co.flags.enabled == ColliderEnabled::DisabledByParent {
-                        co.flags.enabled = ColliderEnabled::Enabled;
-                    } else if !rb.enabled && co.flags.enabled == ColliderEnabled::Enabled {
-                        co.flags.enabled = ColliderEnabled::DisabledByParent;
-                    }
+                    // if rb.enabled && co.flags.enabled == ColliderEnabled::DisabledByParent {
+                    //     co.flags.enabled = ColliderEnabled::Enabled;
+                    // } else if !rb.enabled && co.flags.enabled == ColliderEnabled::Enabled {
+                    //     co.flags.enabled = ColliderEnabled::DisabledByParent;
+                    // }
 
-                    co.changes |= ColliderChanges::MODIFIED | ColliderChanges::ENABLED_OR_DISABLED;
+                    // co.changes |= ColliderChanges::MODIFIED | ColliderChanges::ENABLED_OR_DISABLED;
                 }
 
                 // Propagate the rigid-body’s enabled/disable status to its attached impulse joints.
